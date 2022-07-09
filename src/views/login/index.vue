@@ -65,6 +65,8 @@ export default {
         } else {
           this.$message.success(res.message)
           this.updateToken(res.token)
+          // 跳转到布局页面
+          this.$router.push('/')
         }
       })
     },
