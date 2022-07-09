@@ -31,6 +31,7 @@
 <script>
 import { loginAPI } from '@/api'
 import { mapMutations } from 'vuex'
+
 export default {
   name: 'my-login',
   data () {
@@ -53,6 +54,7 @@ export default {
       }
     }
   },
+
   methods: {
     /* 登录按钮点击事件 */
     loginFn () {

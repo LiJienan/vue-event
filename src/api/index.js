@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import store from '@/store'
 /* request方法调用在原地是一个Promise对象(内部包含原生ajax请求)
 * return 这个Promise对象到逻辑页面,去那边对Promise对象提取结果
 *  */
@@ -9,6 +10,7 @@ import request from '@/utils/request'
  * @param repassword
  * @returns {*}
  */
+// 注册接口
 export const registerAPI = ({ username, password, repassword }) => request({
   url: '/api/reg',
   method: 'POST',
@@ -24,11 +26,20 @@ export const registerAPI = ({ username, password, repassword }) => request({
  * @param password
  * @returns {*}
  */
+// 登录接口
 export const loginAPI = ({ username, password }) => request({
   url: '/api/login',
   method: 'POST',
   data: {
     username,
     password
+  }
+})
+// 获取用户信息接口
+export const getUserInfoAPI = () => request({
+  url: '/my/userinfo',
+  method: 'GET',
+  headers: {
+    Authorization: store.state.token
   }
 })

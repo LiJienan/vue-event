@@ -41,8 +41,22 @@
 </template>
 
 <script>
+/*
+* 经验:在组件标签上绑定的所有事件(包括原生事件的名字click,input等)
+* 都是自定义事件,都需要组件内用$emit来触发才行
+* 万一组件内不支持这个原生事件的名字
+* 解决:
+* 使用@事件名.native="methods里方法名"
+* .native给组件内根标签,绑定原生的事件
+*  */
+import { getUserInfoAPI } from '@/api'
+
 export default {
   name: 'my-layout',
+  async created () {
+    const { data: res } = await getUserInfoAPI()
+    console.log(res)
+  },
   methods: {
     quickFn () {
       this.$confirm('确定要退出吗?', '提示', {
