@@ -34,7 +34,7 @@
           Main.vue后台主页
         </el-main>
         <!-- 底部 footer 区域 -->
-        <el-footer>© www.itheima.com - 黑马程序员!!!!</el-footer>
+        <el-footer>© www.itheima.com - 黑马程序员</el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -49,13 +49,11 @@
 * 使用@事件名.native="methods里方法名"
 * .native给组件内根标签,绑定原生的事件
 *  */
-import { getUserInfoAPI } from '@/api'
 
 export default {
   name: 'my-layout',
-  async created () {
-    const { data: res } = await getUserInfoAPI()
-    console.log(res)
+  created () {
+    this.$store.dispatch('getUserInfoActions')
   },
   methods: {
     quickFn () {
