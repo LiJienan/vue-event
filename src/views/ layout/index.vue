@@ -52,9 +52,6 @@
 
 export default {
   name: 'my-layout',
-  created () {
-    this.$store.dispatch('getUserInfoActions')
-  },
   methods: {
     quickFn () {
       this.$confirm('确定要退出吗?', '提示', {
