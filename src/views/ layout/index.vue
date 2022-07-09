@@ -59,7 +59,9 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        // 用户选择确定后,清除vuex中的token和用户信息,然后跳转到登录页面
         this.$store.commit('updateToken', '')
+        this.$store.commit('updateUserInfo', {})
         this.$router.replace('/login')
       }).catch(() => {
       })
