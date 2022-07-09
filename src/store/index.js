@@ -8,12 +8,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 1.存储登录成功后,得到的token
-    token: '',
-    userInfo: {}
+    token: '', // 保存用户token
+    userInfo: {} // 保存用户信息(id,username,nickname,email,user_pic)
   },
   getters: {
+    username (state) { // 完整写法 用户名
+      return state.userInfo.username
+    },
     nickname: state => state.userInfo.nickname, // 昵称
-    username: state => state.userInfo.username, // 用户名
+    // username: state => state.userInfo.username, // 用户名
     user_pic: state => state.userInfo.user_pic // 用户头像
   },
   mutations: {
