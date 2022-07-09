@@ -41,42 +41,28 @@
               @close="handleClose"
               background-color="#23262E"
               text-color="#fff"
-              active-text-color="#409EFF">
-              <el-menu-item index="/home">
-                <i class="el-icon-s-home"></i>
-                <span>首页</span>
+              active-text-color="#409EFF"
+              unique-opened
+              router
+            >
+              <template v-for="item in menus" >
+              <el-menu-item  :index="item.indexPath" :key="item.indexPath" v-if="!item.children">
+                <i :class="item.icon"></i>
+                <span>{{item.title}}</span>
               </el-menu-item>
-              <el-submenu index="/topic">
+              <el-submenu :index="item.indexPath" :key="item.indexPath" v-else>
                 <template slot="title">
-                  <i class="el-icon-s-order"></i>
-                  <span>文章管理</span>
+                  <i :class="item.icon"></i>
+                  <span>{{item.title}}</span>
                 </template>
-                  <el-menu-item index="/topic1">
-                    <i class="el-icon-s-order"></i>
-                    <span>文章1</span>
+                  <el-menu-item :index="subItem.indexPath" v-for="subItem in item.children" :key=subItem.indexPath>
+                    <i :class="subItem.icon"></i>
+                    <span>{{subItem.title}}</span>
                   </el-menu-item>
-                <el-menu-item index="/topic2  ">
-                  <i class="el-icon-s-order"></i>
-                  <span>文章2</span>
-                </el-menu-item>
-
               </el-submenu>
-              <el-submenu index="/mine">
-                <template slot="title">
-                  <i class="el-icon-location"></i>
-                  <span>个人中心</span>
-                </template>
-                <el-menu-item index="/main1">
-                  <i class="el-icon-s-order"></i>
-                  <span>文章2</span>
-                </el-menu-item>
-                <el-menu-item index="/main2">
-                  <i class="el-icon-s-order"></i>
-                  <span>文章2</span>
-                </el-menu-item>
-              </el-submenu>
-
+              </template>
             </el-menu>
+
       </el-aside>
       <el-container>
         <!-- 页面主体区域 -->
@@ -100,8 +86,20 @@
 * .native给组件内根标签,绑定原生的事件
 *  */
 import { mapGetters } from 'vuex'
+import { getMenusListAPI } from '@/api'
+
 export default {
   name: 'my-layout',
+  data () {
+    return {
+      menus: []
+    }
+  },
+  async created () {
+    const { data: res } = await getMenusListAPI()
+    console.log(res)
+    this.menus = res.data
+  },
   computed: {
     ...mapGetters(['nickname', 'username', 'user_pic'])
   },

@@ -43,3 +43,10 @@ export const getUserInfoAPI = () => request({
     Authorization: store.state.token
   }
 })
+// 获取侧边栏数据
+export const getMenusListAPI = () => request({
+  url: '/my/menus',
+  headers: {
+    Authorization: store.state.token
+  }
+})
