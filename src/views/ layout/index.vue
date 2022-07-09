@@ -34,7 +34,7 @@
           Main.vue后台主页
         </el-main>
         <!-- 底部 footer 区域 -->
-        <el-footer>© www.itheima.com - 黑马程序员</el-footer>
+        <el-footer>© www.itheima.com - 黑马程序员!!!!</el-footer>
       </el-container>
     </el-container>
   </el-container>
