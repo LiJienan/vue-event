@@ -15,7 +15,7 @@
         <el-submenu index="1">
           <template slot="title">
             <!-- 头像 -->
-            <img src="../../assets/images/logo.png" alt="" class="avatar" />
+            <img src="../../assets/images/head.png" alt="" class="avatar" />
             <span>个人中心</span>
           </template>
           <el-menu-item index="1-1"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
@@ -27,7 +27,13 @@
     </el-header>
     <el-container>
       <!-- 侧边栏区域 -->
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <div class="user-box">
+          <img :src="user_pic" alt="" v-if="user_pic">
+          <img src="../../assets/images/head.png" alt="" v-else>
+          <span>欢迎{{nickname||username}}</span>
+        </div>
+      </el-aside>
       <el-container>
         <!-- 页面主体区域 -->
         <el-main>
@@ -49,9 +55,12 @@
 * 使用@事件名.native="methods里方法名"
 * .native给组件内根标签,绑定原生的事件
 *  */
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'my-layout',
+  computed: {
+    ...mapGetters(['nickname', 'username', 'user_pic'])
+  },
   methods: {
     quickFn () {
       this.$confirm('确定要退出吗?', '提示', {
@@ -103,5 +112,26 @@ export default {
   background-color: #fff;
   margin-right: 10px;
   object-fit: cover;
+}
+.user-box {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  user-select: none;
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 15px;
+    object-fit: cover;
+  }
+  span {
+    color: white;
+    font-size: 12px;
+  }
 }
 </style>
