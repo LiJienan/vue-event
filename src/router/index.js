@@ -2,13 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 const register = () => import('@/views/register')
 const login = () => import('@/views/login')
+const laylout = () => import('@/views/ layout')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: '/login'
+    component: laylout
   },
   {
     name: 'reg',
