@@ -71,3 +71,15 @@ export const updateUserPicAPI = (avatar) => request({
     avatar
   }
 })
+
+// 更新用户密码
+export const updateUserPwd = ({ old_pwd, new_pwd, re_pwd }) => request({
+  url: '/my/updatepwd',
+  method: 'PATCH',
+  data: {
+    old_pwd,
+    new_pwd,
+    re_pwd
+  }
+
+})
