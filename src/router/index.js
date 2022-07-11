@@ -6,6 +6,7 @@ const login = () => import('@/views/login')
 const laylout = () => import('@/views/ layout')
 const home = () => import('@/views/home')
 const userInfo = () => import('@/views/user/userInfo')
+const userAvatar = () => import('@/views/user/userAvatar')
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,10 @@ const routes = [
       {
         path: 'user-info',
         component: userInfo
+      },
+      {
+        path: 'user-avatar', // 必须用这个值
+        component: userAvatar
       }
     ]
   },
