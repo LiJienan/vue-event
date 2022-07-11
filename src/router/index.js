@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
     if (whiteList.includes(to.path)) {
       next()
     } else {
-      next('/login')
+      next('/login ')
     }
   }
 })
