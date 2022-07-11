@@ -25,7 +25,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitFn">提交修改</el-button>
-        <el-button>重置</el-button>
+        <el-button @click="resetFn">重置</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -59,7 +59,7 @@ export default {
   methods: {
     // 提交修改,点击事件
     submitFn () {
-      console.log(this.userForm)
+      // console.log(this.userForm)
       this.$refs.userFormRef.validate(async (valid) => {
         if (valid) {
           const { data: res } = await updateUserInfoAPI({ id: this.$store.state.userInfo.id, ...this.userForm })
@@ -71,6 +71,13 @@ export default {
           return false
         }
       })
+    },
+    // 点击重置
+    resetFn () {
+      // this.userForm.nickname = ''
+      // this.userForm.email = ''
+      /* elementUI提供了一个方法既可以重置输入框,也可以重置错误提示 */
+      this.$refs.userFormRef.resetFields()
     }
   }
 }
