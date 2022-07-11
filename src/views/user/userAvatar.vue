@@ -12,7 +12,7 @@
       <div class="btn-box">
         <input type="file" accept="image/*" style="display: none" ref="iptRef" @change="onFileChange" />
         <el-button type="primary" icon="el-icon-plus" @click="chooseImg">选择图片</el-button>
-        <el-button type="success" icon="el-icon-upload" :disabled="avatar === ''">上传头像</el-button>
+        <el-button type="success" icon="el-icon-upload" :disabled="avatar === ''" @click="uploadFn">上传头像</el-button>
       </div>
     </div>
   </el-card>
@@ -52,13 +52,19 @@ export default {
         console.log(files[0])
         const fr = new FileReader()
         fr.readAsDataURL(files[0])
-        fr.onload = async (e) => {
+        fr.onload = (e) => {
           this.avatar = e.target.result // e.target.result就是读完的结果
           // 以上都是固定写法
-          const res = await updateUserPicAPI(this.avatar)
-          console.log(res)
         }
       }
+    },
+    // 点击上传头像
+    async uploadFn () {
+      const { data: res } = await updateUserPicAPI(this.avatar)
+      console.log(res)
+      if (res.code !== 0) return this.$message.error('头像上传失败')
+      this.$message.success('头像上传成功')
+      this.$store.dispatch('getUserInfoActions')
     }
   }
 }
