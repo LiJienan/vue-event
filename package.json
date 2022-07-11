@@ -33,5 +33,9 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.14"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:LiJienan/vue-event.git",
+  "author": "Li <lijienan2016@outlook.com>",
+  "license": "MIT"
 }
