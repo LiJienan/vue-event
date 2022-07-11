@@ -50,3 +50,15 @@ export const getMenusListAPI = () => request({
     Authorization: store.state.token
   }
 })
+// 更新用户资料
+export const updateUserInfoAPI = ({ id, username, nickname, user_pic, email }) => request({
+  url: '/my/userinfo',
+  method: 'PUT',
+  data: {
+    id,
+    username,
+    nickname,
+    user_pic,
+    email
+  }
+})
