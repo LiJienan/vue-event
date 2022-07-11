@@ -5,6 +5,7 @@ const register = () => import('@/views/register')
 const login = () => import('@/views/login')
 const laylout = () => import('@/views/ layout')
 const home = () => import('@/views/home')
+const userInfo = () => import('@/views/user/userInfo')
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,10 @@ const routes = [
       {
         path: 'home',
         component: home
+      },
+      {
+        path: 'user-info',
+        component: userInfo
       }
     ]
   },

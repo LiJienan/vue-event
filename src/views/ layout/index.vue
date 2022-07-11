@@ -35,7 +35,7 @@
         </div>
 
             <el-menu
-              default-active="/home"
+              :default-active="$route.path"
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose"
