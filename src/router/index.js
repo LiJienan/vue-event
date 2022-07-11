@@ -4,13 +4,21 @@ import store from '@/store'
 const register = () => import('@/views/register')
 const login = () => import('@/views/login')
 const laylout = () => import('@/views/ layout')
+const home = () => import('@/views/home')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: laylout
+    component: laylout,
+    redirect: 'home',
+    children: [
+      {
+        path: 'home',
+        component: home
+      }
+    ]
   },
   {
     name: 'reg',
