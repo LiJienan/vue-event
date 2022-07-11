@@ -47,10 +47,52 @@
 </template>
 
 <script>
-// import * as echarts from 'echarts'
+
+/*
+* echarts内部用的是命名导出 exports const 变量名 多个
+*正常导入 import {变量名,变量名} from 'echarts'得一个一个导出
+*目的:一次性导出所有的,形成一个对象使用
+* 语法: import * as echarts from 'echarts'
+*  */
+import * as echarts from 'echarts'
 
 export default {
-  name: 'my-home'
+  name: 'my-home',
+  mounted () {
+    this.curveShowFn()
+  },
+
+  methods: {
+    curveShowFn () {
+      // 基于准备好的dom，初始化echarts实例
+      const myChart = echarts.init(document.getElementById('curve_show'))
+
+      // 指定图表的配置项和数据
+      const option = {
+        title: {
+          text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+          data: ['销量']
+        },
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          }
+        ]
+      }
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
+    }
+  }
 }
 </script>
 
