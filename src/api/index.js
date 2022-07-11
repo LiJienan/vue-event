@@ -62,3 +62,12 @@ export const updateUserInfoAPI = ({ id, username, nickname, user_pic, email }) =
     email
   }
 })
+
+// 更新用户头像
+export const updateUserPicAPI = (avatar) => request({
+  url: '/my/update/avatar',
+  method: 'PATCH',
+  data: {
+    avatar
+  }
+})
