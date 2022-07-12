@@ -5,9 +5,12 @@ const register = () => import('@/views/register')
 const login = () => import('@/views/login')
 const laylout = () => import('@/views/ layout')
 const home = () => import('@/views/home')
+// 个人中心
 const userInfo = () => import('@/views/user/userInfo')
 const userAvatar = () => import('@/views/user/userAvatar')
 const userPwd = () => import('@/views/user/userPwd')
+// 文章管理
+const artCate = () => import('@/views/article/artCate')
 
 Vue.use(VueRouter)
 
@@ -32,6 +35,10 @@ const routes = [
       {
         path: 'user-pwd', // 必须用这个值
         component: userPwd
+      }, {
+        path: 'art-cate',
+        component: artCate
+
       }
     ]
   },

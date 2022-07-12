@@ -33,7 +33,7 @@ export default {
       if (value === this.pwdForm.old_pwd) {
         return callback(new Error('新旧密码不能相同！'))
       }
-      callback()
+      callback()// 通过校验
     }
     // 检测两次新密码是否一致
     const rePwd = (rule, value, callback) => {
@@ -77,6 +77,11 @@ export default {
           this.pwdForm = {}
           if (res.code !== 0) return this.$message.error(res.message)
           this.$message.success(res.message)
+          this.$refs.pwdFormRef.resetFields()
+          //  重置密码 被动退出
+          this.$store.commit('updateToken', '')
+          this.$store.commit('updateToken', {})
+          this.$router.push('/login')
         }
       })
     },
