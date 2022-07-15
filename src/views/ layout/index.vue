@@ -97,7 +97,7 @@ export default {
   },
   async created () {
     const { data: res } = await getMenusListAPI()
-    console.log(res)
+    // console.log(res)
     this.menus = res.data
   },
   computed: {

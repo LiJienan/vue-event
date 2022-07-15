@@ -35,10 +35,14 @@ const routes = [
       {
         path: 'user-pwd', // 必须用这个值
         component: userPwd
-      }, {
+      },
+      {
         path: 'art-cate',
         component: artCate
-
+      },
+      {
+        path: 'art-list', // 文章列表
+        component: () => import('@/views/article/artList')
       }
     ]
   },
